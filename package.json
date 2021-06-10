@@ -1,0 +1,35 @@
+{
+    "name": "ga-tracker",
+    "version": "0.0.1",
+    "description": "Google Analytics SDK for Vue",
+    "scripts": {
+        "dev": "rollup -w -c --sourcemap",
+        "build": "rollup -c"
+    },
+    "main": "index.js",
+    "browser": "dist/ga.js",
+    "repository": "git@github.com:OUDUIDUI/ga-tracker.git",
+    "author": "OUDUIDUI",
+    "license": "MIT",
+    "keywords": [
+        "ga",
+        "track",
+        "rollup",
+        "typescript"
+    ],
+    "dependencies": {
+        "@babel/core": "^7.14.5",
+        "@babel/plugin-transform-runtime": "^7.14.5",
+        "@babel/preset-env": "^7.14.5",
+        "core-js": "^3.14.0",
+        "rollup": "^2.51.1",
+        "rollup-plugin-babel": "^4.4.0",
+        "rollup-plugin-commonjs": "^10.1.0",
+        "rollup-plugin-eslint": "^7.0.0",
+        "rollup-plugin-node-resolve": "^5.2.0",
+        "rollup-plugin-terser": "^7.0.2",
+        "rollup-plugin-typescript": "^1.0.1",
+        "tslib": "^2.2.0",
+        "typescript": "^4.3.2"
+    }
+}
