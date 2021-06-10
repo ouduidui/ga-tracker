@@ -1,5 +1,7 @@
-import ga from "./ga";
+import {GoogleAnalytics} from "./GoogleAnalytics";
+import {Tracker} from "./Tracker";
 
 export {
-    ga
+    GoogleAnalytics,
+    Tracker
 }
