@@ -2,11 +2,13 @@
  * 生成cid
  * @return string
  * */
+import {HitType} from "../type";
+
 export function getUUID(): string {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,
         function (c: string) {
-            const r:number = Math.random() * 16 | 0,
-                v:number = c == 'x' ? r : (r & 0x3 | 0x8);
+            const r: number = Math.random() * 16 | 0,
+                v: number = c == 'x' ? r : (r & 0x3 | 0x8);
             return v.toString(16);
         });
 }
@@ -17,7 +19,7 @@ export function getUUID(): string {
  * @param key
  * */
 export function getStorageSync(key: string): string | undefined {
-    if(!key) return ;
+    if (!key) return;
     /* eslint-disable */
     if (typeof window == 'object' && typeof window.localStorage == 'object') {
         // @ts-ignore
@@ -45,7 +47,7 @@ export function getStorageSync(key: string): string | undefined {
  * @param value
  * */
 export function setStorageSync(key: string, value: string) {
-    if(!key) return ;
+    if (!key) return;
     /* eslint-disable */
     if (typeof window == 'object' && typeof window.localStorage == 'object') {
         // @ts-ignore
@@ -74,7 +76,7 @@ export function getSystemInfo(): object {
     if (typeof uni == 'object' && typeof uni.getSystemInfo == 'function') {
         // @ts-ignore
         return uni.getSystemInfo()
-    }else {
+    } else {
         // @ts-ignore
         return wx.getSystemInfo()
     }
@@ -86,13 +88,13 @@ export function getSystemInfo(): object {
  * @param options
  * @param context
  * */
-export function request(options:object, context: object) {
+export function request(options: object, context: object) {
     /* eslint-disable */
     // @ts-ignore
     if (typeof uni == 'object' && typeof uni.getSystemInfo == 'function') {
         // @ts-ignore
         return uni.request(options).bind(context)
-    }else {
+    } else {
         // @ts-ignore
         return wx.request(options).bind(context)
     }
@@ -100,6 +102,17 @@ export function request(options:object, context: object) {
 }
 
 // 支持Measurement Protocol“&”符号语法
-export function hit_param_fix(paramName: string){
+export function hit_param_fix(paramName: string) {
     return String(paramName).replace(/^&/, '');
+}
+
+// 将URL转换为hit
+export function parseUtmParams(url: string): HitType | any {
+    const cp = CampaignParams.parseFromUrl(url);
+    const map: any = cp.params_map;
+    const hit: any = {};
+    for (const k in cp.params) {
+        hit[map[k]] = cp.params[k];
+    }
+    return hit;
 }

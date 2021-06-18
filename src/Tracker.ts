@@ -1,8 +1,8 @@
-import {GoogleAnalytics} from "./GoogleAnalytics";
+import GoogleAnalytics from "./GoogleAnalytics";
 import {hit_param_fix, request} from "./utils";
 import {HitType} from "../type";
 
-export class Tracker {
+export default class Tracker {
     ga: GoogleAnalytics;
     hit: HitType | any;
     trackerServer: string;
@@ -35,7 +35,7 @@ export class Tracker {
     /**
      * 获取对应参数
      * */
-    get(key: string): string | number {
+    get(key: string): string | number | undefined {
         return this.hit[hit_param_fix(key)];
     }
 
@@ -134,14 +134,18 @@ export class Tracker {
         return this.set("vp", viewportSize);
     }
 
-
-    // 发送请求
+    /**
+     * 发送请求
+     * */
     send(hit: HitType) {
         this.send_queue_push(this.ga, hit);
         return this;
     }
 
-    // 小程序最多只有5个并发网络请求，使用队列方式尽量不过多占用请求
+    /**
+     * 处理发送队列
+     * 小程序最多只有5个并发网络请求，使用队列方式尽量不过多占用请求
+     * */
     send_queue_push(ga: GoogleAnalytics, hit: HitType | any) {
         const t:Tracker = this;
 
@@ -182,7 +186,9 @@ export class Tracker {
         this._do_send();
     }
 
-    // 发送动作
+    /**
+     * 发送动作
+     * */
     _do_send() {
         if(this.sending) return;
 

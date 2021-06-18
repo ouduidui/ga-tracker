@@ -1,7 +1,7 @@
 import {getUUID, getStorageSync, setStorageSync, getSystemInfo} from "./utils";
-import {Tracker} from "./Tracker";
+import Tracker from "./Tracker";
 
-export class GoogleAnalytics {
+export default class GoogleAnalytics {
     app: object | undefined;   // APP名称
     appName: string;   // APP名称
     appVersion: string;  // 版本号
