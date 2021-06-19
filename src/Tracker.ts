@@ -147,8 +147,6 @@ export default class Tracker {
      * 小程序最多只有5个并发网络请求，使用队列方式尽量不过多占用请求
      * */
     send_queue_push(ga: GoogleAnalytics, hit: HitType | any) {
-        const t:Tracker = this;
-
         // 默认基础字段
         const data: HitType | any = {
             v: 1,
@@ -164,18 +162,18 @@ export default class Tracker {
         };
 
         // 合并Tracker上的参数
-        for (const k in t.hit) {
-            data[k] = t.hit[k];
+        for (const k1 in this.hit) {
+            data[k1] = this.hit[k1];
         }
         // Tracker上有预设的单次发送数据
-        for (const k in t.next_hit) {
-            data[k] = t.next_hit[k];
+        for (const k2 in this.next_hit) {
+            data[k2] = this.next_hit[k2];
         }
-        t.next_hit = {};
+        this.next_hit = {};
 
         // 合并Builder上的参数
-        for (const k in hit) {
-            data[k] = hit[k];
+        for (const k3 in hit) {
+            data[k3] = hit[k3];
         }
 
         // 打印发送数据

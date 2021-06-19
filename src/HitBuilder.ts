@@ -1,5 +1,7 @@
 import {HitType} from "../type";
 import {hit_param_fix, parseUtmParams} from "./utils";
+import Promotion from "./ecommerce/Promotion";
+import Product from "./ecommerce/Product";
 
 export default class HitBuilder {
     hit: HitType | any;
@@ -51,7 +53,7 @@ export default class HitBuilder {
     /**
      * 添加列表商品
      * */
-    addImpression(product: any, impressionList: string): HitBuilder {
+    addImpression(product: Product, impressionList: string): HitBuilder {
         if (!this.impression_product_list[impressionList]) {
             this.impression_product_list[impressionList] = [this.next_impression_index, 1];
             // 产品展示列表名称
@@ -83,7 +85,7 @@ export default class HitBuilder {
     /**
      * 添加商品
      * */
-    addProduct(product: any): HitBuilder {
+    addProduct(product: Product): HitBuilder {
         const productIndex = this.next_product_index;
 
         for (const k in product.hit) {
@@ -107,7 +109,7 @@ export default class HitBuilder {
     /**
      * 添加促销活动
      * */
-    addPromotion(promotion: any): HitBuilder {
+    addPromotion(promotion: Promotion | any): HitBuilder {
         const promotionIndex = this.next_promotion_index;
 
         for (const k in promotion.hit) {
@@ -133,7 +135,7 @@ export default class HitBuilder {
      * 设置渠道
      * */
     setCampaignParamsFromUrl(url: string) {
-        const hit: HitType | any = parseUtmParams(url);
+        const hit: HitType = parseUtmParams(url);
         return this.setAll(hit);
     }
 

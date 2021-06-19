@@ -3,6 +3,9 @@
  * @return string
  * */
 import {HitType} from "../type";
+import HitBuilder from "./HitBuilder";
+import CampaignParams from "./CampaignParams";
+import GoogleAnalytics from "./GoogleAnalytics";
 
 export function getUUID(): string {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,
@@ -76,11 +79,29 @@ export function getSystemInfo(): object {
     if (typeof uni == 'object' && typeof uni.getSystemInfo == 'function') {
         // @ts-ignore
         return uni.getSystemInfo()
-    } else {
+    }
+    // @ts-ignore
+    if (typeof wx == 'object' && typeof wx.setStorageSync == 'function'){
         // @ts-ignore
         return wx.getSystemInfo()
     }
     /* eslint-enable */
+
+    return {
+        brand: "unknown",
+        screenWidth: 0,
+        screenHeight: 0,
+        windowWidth: 0,
+        windowHeight: 0,
+        pixelRatio: 1,
+        language: "zh_CN",
+        system: "unknown",
+        model: "unknown",
+        version: "unknown",
+        platform: "unknown",
+        fontSizeSetting: 0,
+        SDKVersion: "unknown",
+    };
 }
 
 /**
@@ -102,12 +123,12 @@ export function request(options: object, context: object) {
 }
 
 // 支持Measurement Protocol“&”符号语法
-export function hit_param_fix(paramName: string) {
+export function hit_param_fix(paramName: string): string {
     return String(paramName).replace(/^&/, '');
 }
 
 // 将URL转换为hit
-export function parseUtmParams(url: string): HitType | any {
+export function parseUtmParams(url: string): HitType {
     const cp = CampaignParams.parseFromUrl(url);
     const map: any = cp.params_map;
     const hit: any = {};
@@ -116,3 +137,20 @@ export function parseUtmParams(url: string): HitType | any {
     }
     return hit;
 }
+
+
+// 删除一些无效的可选参数
+export function hit_delete_if(hitBuilder: HitBuilder, paramName: string, condValue: string | number | undefined) {
+    if (hitBuilder.hit[paramName] == condValue) {
+        delete hitBuilder.hit[paramName];
+    }
+}
+
+export function getInstance(app: any = {}) {
+    if (!app.defaultGoogleAnalyticsInstance) {
+        app.defaultGoogleAnalyticsInstance = new GoogleAnalytics(app);
+    }
+
+    return app.defaultGoogleAnalyticsInstance;
+}
+
