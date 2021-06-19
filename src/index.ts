@@ -13,7 +13,7 @@ export default {
     GoogleAnalytics: {
         getInstance
     },
-    HitBuilder: {
+    HitBuilders: {
         HitBuilder,
         ScreenViewBuilder,
         EventBuilder,

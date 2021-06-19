@@ -78,12 +78,12 @@ export function getSystemInfo(): object {
     // @ts-ignore
     if (typeof uni == 'object' && typeof uni.getSystemInfo == 'function') {
         // @ts-ignore
-        return uni.getSystemInfo()
+        return uni.getSystemInfoSync()
     }
     // @ts-ignore
     if (typeof wx == 'object' && typeof wx.setStorageSync == 'function'){
         // @ts-ignore
-        return wx.getSystemInfo()
+        return wx.getSystemInfoSync()
     }
     /* eslint-enable */
 
@@ -107,17 +107,16 @@ export function getSystemInfo(): object {
 /**
  * 获取getSystemInfo方法
  * @param options
- * @param context
  * */
-export function request(options: object, context: object) {
+export function request(options: object) {
     /* eslint-disable */
     // @ts-ignore
     if (typeof uni == 'object' && typeof uni.getSystemInfo == 'function') {
         // @ts-ignore
-        return uni.request(options).bind(context)
+        return uni.request(options)
     } else {
         // @ts-ignore
-        return wx.request(options).bind(context)
+        return wx.request(options)
     }
     /* eslint-enable */
 }
@@ -137,7 +136,6 @@ export function parseUtmParams(url: string): HitType {
     }
     return hit;
 }
-
 
 // 删除一些无效的可选参数
 export function hit_delete_if(hitBuilder: HitBuilder, paramName: string, condValue: string | number | undefined) {

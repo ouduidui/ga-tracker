@@ -1,5 +1,5 @@
 import GoogleAnalytics from "./GoogleAnalytics";
-import {hit_param_fix, request} from "./utils";
+import {hit_param_fix, parseUtmParams, request} from "./utils";
 import {HitType} from "../type";
 
 export default class Tracker {
@@ -50,94 +50,103 @@ export default class Tracker {
     /**
      * 对 IP 地址进行匿名处理
      * */
-    setAnonymizeIp(anonymize: boolean) {
+    setAnonymizeIp(anonymize: boolean): Tracker {
         return this.set("aip", anonymize ? 1 : 0);
     }
 
     /**
      * 设置应用ID
      * */
-    setAppId(appId: string) {
+    setAppId(appId: string): Tracker {
         return this.set("aid", appId)
     }
 
     /**
      * 设置应用安装程序ID
      * */
-    setAppInstallerId(appInstallerId: string) {
+    setAppInstallerId(appInstallerId: string): Tracker {
         return this.set("aiid", appInstallerId)
     }
 
     /**
      * 设置应用名称
      * */
-    setAppName(appName: string) {
+    setAppName(appName: string): Tracker {
         return this.set("an", appName);
     }
 
     /**
      * 设置应用名称
      * */
-    setAppVersion(appVersion: string) {
+    setAppVersion(appVersion: string) : Tracker{
         return this.set("av", appVersion);
     }
 
-    // TODO
-    setCampaignParamsOnNextHit() {}
+    /**
+     * 为下个hit设置utm
+     * */
+    setCampaignParamsOnNextHit(uri:string) :Tracker {
+        const hit:any = parseUtmParams(uri);
+        this.next_hit = {};
+        for (const k in hit) {
+            this.next_hit[k] = hit[k];
+        }
+        return this;
+    }
 
     /**
      * 设置客户端ID
      * */
-    setClientId(clientId: string) {
+    setClientId(clientId: string): Tracker {
         return this.set("cid", clientId);
     }
 
     /**
      * 设置文档编码
      * */
-    setEncoding(encoding: string) {
+    setEncoding(encoding: string): Tracker {
         return this.set("de", encoding);
     }
 
     /**
      * 设置用户语言
      * */
-    setLanguage(language: string) {
+    setLanguage(language: string): Tracker {
         return this.set("ul", language);
     }
 
     /**
      * 地理位置替换
      * */
-    setLocation(location: string) {
+    setLocation(location: string): Tracker {
         return this.set("geoid", location);
     }
 
     /**
      * 设置屏幕颜色
      * */
-    setScreenColors(screenColors: string) {
+    setScreenColors(screenColors: string): Tracker {
         return this.set("sd", screenColors);
     }
 
     /**
      * 设置屏幕名称
      * */
-    setScreenName(screenName: string) {
+    setScreenName(screenName: string): Tracker {
         return this.set("cd", screenName);
     }
 
     /**
      * 设置视口大小
      * */
-    setViewportSize(viewportSize: string) {
+    setViewportSize(viewportSize: string): Tracker {
         return this.set("vp", viewportSize);
     }
 
     /**
      * 发送请求
      * */
-    send(hit: HitType) {
+    send(hit: HitType): Tracker {
         this.send_queue_push(this.ga, hit);
         return this;
     }
@@ -263,6 +272,6 @@ export default class Tracker {
                     self._do_send();
                 }, 0);
             }
-        }, this)
+        })
     }
 }
