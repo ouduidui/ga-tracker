@@ -48,6 +48,7 @@ export default class HitBuilder {
         for (const k in params) {
             this.set(k, params[k]);
         }
+        return this;
     }
 
     /**
