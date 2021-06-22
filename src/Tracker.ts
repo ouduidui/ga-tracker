@@ -102,6 +102,13 @@ export default class Tracker {
     }
 
     /**
+     * 设置用户 ID
+     * */
+    setUserId(userId: string): Tracker {
+        return this.set("uid", userId);
+    }
+
+    /**
      * 设置文档编码
      * */
     setEncoding(encoding: string): Tracker {
