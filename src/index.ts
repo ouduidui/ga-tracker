@@ -24,5 +24,4 @@ export default {
     Product,
     ProductAction,
     Promotion
-
 }

@@ -4,6 +4,8 @@ export interface HitType {
     v?: number;
     // 设备ID
     cid?: string;
+    // 用户ID
+    uid?: string;
     // 数据来源
     ds?: string;
     // 设备语言

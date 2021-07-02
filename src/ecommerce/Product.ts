@@ -71,7 +71,7 @@ export default class Product {
     }
 
     /**
-     * 产品款式款式
+     * 产品款式
      * */
     setVariant(variant: string): Product {
         this.hit["va"] = variant;
