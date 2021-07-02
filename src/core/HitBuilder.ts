@@ -46,7 +46,10 @@ export default class HitBuilder {
      * */
     setAll(params: HitType | any) {
         for (const k in params) {
-            this.set(k, params[k]);
+            if(params.hasOwnProperty(k)){
+                this.set(k, params[k]);
+            }
+
         }
         return this;
     }
@@ -75,7 +78,9 @@ export default class HitBuilder {
             // 产品展示款式 -> il<listIndex>pi<productIndex>va
             // 产品展示位置 -> il<listIndex>pi<productIndex>ps
             // 产品展示价格 -> il<listIndex>pi<productIndex>pr
-            this.set("il" + listIndex + "pi" + productIndex + k, product.hit[k]);
+            if(product.hit.hasOwnProperty(k)) {
+                this.set("il" + listIndex + "pi" + productIndex + k, product.hit[k]);
+            }
         }
 
         this.impression_product_list[impressionList][1] = productIndex + 1;
@@ -100,7 +105,9 @@ export default class HitBuilder {
             // 产品价格 -> pr<productIndex>pr
             // 产品优惠券代码 -> pr<productIndex>cc
             // 产品位置 -> pr<productIndex>ps
-            this.set("pr" + productIndex + k, product.hit[k]);
+            if(product.hit.hasOwnProperty(k)) {
+                this.set("pr" + productIndex + k, product.hit[k]);
+            }
         }
 
         this.next_product_index++;
@@ -118,7 +125,9 @@ export default class HitBuilder {
             // 促销名称 -> promo<promoIndex>nm
             // 促销广告素材 -> promo<promoIndex>cr
             // 促销位置 -> promo<promoIndex>ps
-            this.set("promo" + promotionIndex + k, promotion.hit[k]);
+            if(promotion.hit.hasOwnProperty(k)) {
+                this.set("promo" + promotionIndex + k, promotion.hit[k]);
+            }
         }
 
         this.next_promotion_index++;
@@ -197,8 +206,10 @@ export default class HitBuilder {
 
         // 清除旧的自定义维度cd<index>,自定义指标cm<index>
         for(const k in this.hit) {
-            if (k.match(/^(cd|cm)\d+$/)) {
-                del_keys.push(k);
+            if(this.hit.hasOwnProperty(k)) {
+                if (k.match(/^(cd|cm)\d+$/)) {
+                    del_keys.push(k);
+                }
             }
         }
 
