@@ -128,7 +128,7 @@ export default class HitBuilder {
     /**
      * 设置促销操作
      * */
-    setPromotionAction(action: string): HitBuilder {
+    setPromotionAction(action: 'click' | 'view'): HitBuilder {
         return this.set("promoa", action);
     }
 
