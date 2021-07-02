@@ -1,5 +1,6 @@
-import {getUUID, getStorageSync, setStorageSync, getSystemInfo} from "./utils";
+import {getUUID, getStorageSync, setStorageSync, getSystemInfo} from "../utils";
 import Tracker from "./Tracker";
+import {SystemInfoType} from "../type";
 
 export default class GoogleAnalytics {
     app: object | undefined;   // APP名称
@@ -7,7 +8,7 @@ export default class GoogleAnalytics {
     appVersion: string;  // 版本号
     log: boolean;    // 是否打印上报结构
     cid: string | undefined;  // 设备id
-    systemInfo: any;  // 系统信息
+    systemInfo: SystemInfoType;  // 系统信息
     vp: string;  // 屏幕信息
     trackers: Array<Tracker>;  // 跟踪器
 

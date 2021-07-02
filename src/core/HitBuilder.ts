@@ -1,7 +1,7 @@
 import {HitType} from "../type";
-import {hit_param_fix, parseUtmParams} from "./utils";
-import Promotion from "./ecommerce/Promotion";
-import Product from "./ecommerce/Product";
+import {hit_param_fix, parseUtmParams} from "../utils";
+import Promotion from "../ecommerce/Promotion";
+import Product from "../ecommerce/Product";
 
 export default class HitBuilder {
     hit: HitType | any;

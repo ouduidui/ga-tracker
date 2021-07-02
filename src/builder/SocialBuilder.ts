@@ -1,4 +1,4 @@
-import HitBuilder from "../HitBuilder";
+import HitBuilder from "../core/HitBuilder";
 
 // 社交上报
 export default class SocialBuilder extends HitBuilder {

@@ -1,5 +1,5 @@
 // https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters
-export interface HitType {
+export type HitType = {
     // 协议版本
     v?: number;
     // 设备ID
@@ -124,4 +124,20 @@ export interface HitType {
     gclid ?: string;
     // Google 展示广告 ID
     dclid ?: string;
+}
+
+export type SystemInfoType = {
+    windowWidth: number,
+    windowHeight: number,
+    brand: string,
+    screenWidth: number,
+    screenHeight: number,
+    pixelRatio: number,
+    language: string,
+    system: string,
+    model: string,
+    version: string,
+    platform: string,
+    fontSizeSetting: number,
+    SDKVersion: string
 }

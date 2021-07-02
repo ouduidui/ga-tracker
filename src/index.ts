@@ -1,4 +1,4 @@
-import HitBuilder from "./HitBuilder";
+import HitBuilder from "./core/HitBuilder";
 import ScreenViewBuilder from "./builder/ScreenViewBuilder";
 import EventBuilder from "./builder/EventBuilder";
 import SocialBuilder from "./builder/SocialBuilder";
@@ -7,7 +7,15 @@ import TimingBuilder from "./builder/TimingBuilder";
 import Product from "./ecommerce/Product";
 import ProductAction from "./ecommerce/ProductAction";
 import Promotion from "./ecommerce/Promotion";
-import {getInstance} from "./utils";
+import GoogleAnalytics from "./core/GoogleAnalytics";
+
+function getInstance(app: any = {}) {
+    if (!app.defaultGoogleAnalyticsInstance) {
+        app.defaultGoogleAnalyticsInstance = new GoogleAnalytics(app);
+    }
+
+    return app.defaultGoogleAnalyticsInstance;
+}
 
 export default {
     GoogleAnalytics: {

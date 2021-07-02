@@ -1,5 +1,5 @@
 import GoogleAnalytics from "./GoogleAnalytics";
-import {hit_param_fix, parseUtmParams, request} from "./utils";
+import {hit_param_fix, parseUtmParams, request} from "../utils";
 import {HitType} from "../type";
 
 export default class Tracker {

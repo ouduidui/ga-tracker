@@ -1,4 +1,4 @@
-import HitBuilder from "../HitBuilder";
+import HitBuilder from "../core/HitBuilder";
 
 // 错误上报
 export default class ExceptionBuilder extends HitBuilder {

@@ -1,6 +1,6 @@
-import HitBuilder from "../HitBuilder";
+import HitBuilder from "../core/HitBuilder";
 import {hit_delete_if} from "../utils";
-import {HitType} from "../../type";
+import {HitType} from "../type";
 
 // 事件上报
 export default class EventBuilder extends HitBuilder {

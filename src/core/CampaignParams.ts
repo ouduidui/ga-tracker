@@ -1,5 +1,3 @@
-import {HitType} from "../type";
-
 export default class CampaignParams {
     params: any;
     params_map: Object;

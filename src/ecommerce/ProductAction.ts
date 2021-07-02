@@ -1,4 +1,4 @@
-import {HitType} from "../../type";
+import {HitType} from "../type";
 
 export default class ProductAction {
     hit: HitType;

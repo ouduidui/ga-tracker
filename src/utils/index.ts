@@ -2,10 +2,10 @@
  * 生成cid
  * @return string
  * */
-import {HitType} from "../type";
-import HitBuilder from "./HitBuilder";
-import CampaignParams from "./CampaignParams";
-import GoogleAnalytics from "./GoogleAnalytics";
+import {HitType, SystemInfoType} from "../type";
+import HitBuilder from "../core/HitBuilder";
+import CampaignParams from "../core/CampaignParams";
+import GoogleAnalytics from "../core/GoogleAnalytics";
 
 export function getUUID(): string {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,
@@ -73,7 +73,7 @@ export function setStorageSync(key: string, value: string) {
  * 获取getSystemInfo方法
  * @return object
  * */
-export function getSystemInfo(): object {
+export function getSystemInfo(): SystemInfoType {
     /* eslint-disable */
     // @ts-ignore
     if (typeof uni == 'object' && typeof uni.getSystemInfo == 'function') {
@@ -142,13 +142,5 @@ export function hit_delete_if(hitBuilder: HitBuilder, paramName: string, condVal
     if (hitBuilder.hit[paramName] == condValue) {
         delete hitBuilder.hit[paramName];
     }
-}
-
-export function getInstance(app: any = {}) {
-    if (!app.defaultGoogleAnalyticsInstance) {
-        app.defaultGoogleAnalyticsInstance = new GoogleAnalytics(app);
-    }
-
-    return app.defaultGoogleAnalyticsInstance;
 }
 
