@@ -33,34 +33,59 @@ export default class CampaignParams {
     toUrl(url: string, otherQuery: any = {}) {
         const kv = [];
         for (const k1 in otherQuery) {
-            kv.push([encodeURIComponent(k1), encodeURIComponent(this.params[k1])].join('='));
+            if(otherQuery.hasOwnProperty(k1)){
+                kv.push([encodeURIComponent(k1), encodeURIComponent(this.params[k1])].join('='));
+            }
         }
         for (const k2 in this.params) {
-            kv.push([encodeURIComponent(k2), encodeURIComponent(this.params[k2])].join('='));
+            if(this.params.hasOwnProperty(k2)){
+                kv.push([encodeURIComponent(k2), encodeURIComponent(this.params[k2])].join('='));
+            }
         }
 
         return url + '?' + kv.join('&');
     }
 
     /**
-     * 解析页面参数
+     * 通过页面参数解析
      * */
     static parseFromPageOptions(options: any = {}, map: any = {}): CampaignParams {
         const cp = new CampaignParams();
 
         for (let k in options) {
-            const v = options[k];
+            if (options.hasOwnProperty(k)) {
+                const v = options[k];
 
-            // 从映射表获取对应值
-            if (k in map) {
-                k = map[k];
-            }
+                // 从映射表获取对应值
+                if (k in map) {
+                    k = map[k];
+                }
 
-            // 判断是否广告系列参数
-            if (k.match(/^utm_/) || k == "gclid" || k == "dclid") {
-                cp.set(k, v);
+                // 判断是否广告系列参数
+                if (k.match(/^utm_/) || k == "gclid" || k == "dclid") {
+                    cp.set(k, v);
+                }
             }
         }
+
+        return cp;
+    }
+
+    /**
+     * 通过url参数解析
+     * */
+    static parseFromUrl(url: string) {
+        const queryString = url.replace(/^[^?]+\?/, '');
+        const cp: CampaignParams = new CampaignParams();
+        const map: any = cp.params_map;
+
+        queryString.split('&').map(function (a) {
+            const kv: Array<string> = a.split('=');
+            const k: string = decodeURIComponent(kv[0]);
+            if (kv.length != 2 || kv[1] === "" || !map[k]) return;
+            const v = decodeURIComponent(kv[1]);
+            cp.set(k, v);
+        });
 
         return cp;
     }
@@ -82,22 +107,6 @@ export default class CampaignParams {
             cp.set('utm_source', '小程序场景');
             cp.set('utm_medium', scene + '');
         }
-
-        return cp;
-    }
-
-    static parseFromUrl(url: string) {
-        const queryString = url.replace(/^[^?]+\?/, '');
-        const cp: CampaignParams = new CampaignParams();
-        const map: any = cp.params_map;
-
-        queryString.split('&').map(function (a) {
-            const kv: Array<string> = a.split('=');
-            const k: string = decodeURIComponent(kv[0]);
-            if (kv.length != 2 || kv[1] === "" || !map[k]) return;
-            const v = decodeURIComponent(kv[1]);
-            cp.set(k, v);
-        });
 
         return cp;
     }
