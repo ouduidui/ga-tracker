@@ -33,14 +33,10 @@ export default class CampaignParams {
     toUrl(url: string, otherQuery: any = {}) {
         const kv = [];
         for (const k1 in otherQuery) {
-            if(otherQuery.hasOwnProperty(k1)){
-                kv.push([encodeURIComponent(k1), encodeURIComponent(this.params[k1])].join('='));
-            }
+            kv.push([encodeURIComponent(k1), encodeURIComponent(this.params[k1])].join('='));
         }
         for (const k2 in this.params) {
-            if(this.params.hasOwnProperty(k2)){
-                kv.push([encodeURIComponent(k2), encodeURIComponent(this.params[k2])].join('='));
-            }
+            kv.push([encodeURIComponent(k2), encodeURIComponent(this.params[k2])].join('='));
         }
 
         return url + '?' + kv.join('&');
@@ -53,18 +49,16 @@ export default class CampaignParams {
         const cp = new CampaignParams();
 
         for (let k in options) {
-            if (options.hasOwnProperty(k)) {
-                const v = options[k];
+            const v = options[k];
 
-                // 从映射表获取对应值
-                if (k in map) {
-                    k = map[k];
-                }
+            // 从映射表获取对应值
+            if (k in map) {
+                k = map[k];
+            }
 
-                // 判断是否广告系列参数
-                if (k.match(/^utm_/) || k == "gclid" || k == "dclid") {
-                    cp.set(k, v);
-                }
+            // 判断是否广告系列参数
+            if (k.match(/^utm_/) || k == "gclid" || k == "dclid") {
+                cp.set(k, v);
             }
         }
 
