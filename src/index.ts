@@ -8,6 +8,7 @@ import Product from "./ecommerce/Product";
 import ProductAction from "./ecommerce/ProductAction";
 import Promotion from "./ecommerce/Promotion";
 import GoogleAnalytics from "./core/GoogleAnalytics";
+import CampaignParams from "./core/CampaignParams";
 
 function getInstance(app: any = {}) {
     if (!app.defaultGoogleAnalyticsInstance) {
@@ -31,5 +32,6 @@ export default {
     },
     Product,
     ProductAction,
-    Promotion
+    Promotion,
+    CampaignParams
 }
