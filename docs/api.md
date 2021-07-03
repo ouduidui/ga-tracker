@@ -240,13 +240,13 @@
 
 > **返回** `HitBuilder`
 
-#### `setProductAction(action)`
+#### `setProductAction(productAction)`
 
 添加产品操作，适用于增强型电子商务实现。
 
 | 参数     | 类型   | 默认 | 说明                                                         |
 | -------- | ------ | ---- | ------------------------------------------------------------ |
-| `action` | String | 无   | 商品操作；通常用`ProductAction`的静态属性赋值 |
+| `productAction` | Object | 无   | ProductAction实例 |
 
 > **返回** `HitBuilder`
 

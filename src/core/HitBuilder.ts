@@ -129,9 +129,9 @@ export default class HitBuilder {
     /**
      * 设置商品操作
      * */
-    setProductAction(action: ProductAction | any): HitBuilder {
-        for (var k in action.hit) {
-            this.set(k, action.hit[k]);
+    setProductAction(productAction: ProductAction | any): HitBuilder {
+        for (const k in productAction.hit) {
+            this.set(k, productAction.hit[k]);
         }
         return this;
     }
