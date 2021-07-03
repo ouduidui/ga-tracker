@@ -1,8 +1,7 @@
 {
     "name": "@ouduidui/ga-tracker",
-    "version": "0.0.4",
+    "version": "1.0.0",
     "description": "Google Analytics SDK for UniApp and weixin-miniProgram",
-    "scripts": {},
     "main": "ga.js",
     "browser": "ga.js",
     "repository": "git@github.com:OUDUIDUI/ga-tracker.git",

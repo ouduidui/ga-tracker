@@ -1,10 +1,11 @@
 {
     "name": "ga-tracker",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "description": "Google Analytics SDK for Vue",
     "scripts": {
         "dev": "rollup -w -c --sourcemap",
-        "build": "rollup -c"
+        "build": "rollup -c",
+        "publish": "cd dist && npm publish"
     },
     "main": "index.js",
     "browser": "dist/ga.js",
