@@ -16,7 +16,7 @@ module.exports = {
     },
     "rules": {
         "linebreak-style": [
-            "error",
+            "off",
             "unix"
         ]
     }

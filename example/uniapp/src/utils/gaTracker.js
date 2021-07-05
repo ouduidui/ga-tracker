@@ -1,4 +1,4 @@
-import ga from "../../../../dist/ga";
+import ga from "../../../../dist/index";
 
 const GoogleAnalytics = ga.GoogleAnalytics;
 

@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import {HitBuilders, Product, ProductAction, Promotion, CampaignParams} from "../../../../../dist/ga";
+import {HitBuilders, Product, ProductAction, Promotion, CampaignParams} from "../../../../../dist/index";
 
 export default {
     onLoad(options) {

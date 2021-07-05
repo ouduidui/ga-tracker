@@ -1,5 +1,5 @@
 <script>
-    import {CampaignParams} from "../../../dist/ga";
+    import {CampaignParams} from "../../../dist/index.js";
 
 	export default {
 		onLaunch: function(options) {
