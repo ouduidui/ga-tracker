@@ -5,7 +5,8 @@ import {terser} from "rollup-plugin-terser";
 import {eslint} from "rollup-plugin-eslint";
 import babel from "rollup-plugin-babel";
 import pkg from './package.json';
-import dts from "rollup-plugin-dts"
+import dts from "rollup-plugin-dts";
+import fs from "fs";
 
 export default [
     {
@@ -29,7 +30,8 @@ export default [
                 exclude: 'node_modules/**', // 防止打包node_modules下的文件
                 runtimeHelpers: true, // 使plugin-transform-runtime生效
             }),
-            terser()  // 压缩JS代码
+            terser(),  // 压缩JS代码
+            updatePkgVersion()  // 更新package.json的版本号
         ]
     },
     {
@@ -42,3 +44,18 @@ export default [
         plugins: [dts()],
     }
 ];
+
+function updatePkgVersion() {
+    return {
+        name: 'update-package-version',
+        buildEnd() {
+            const pkgStr = fs.readFileSync("./package.json", "utf-8");
+            const version = pkgStr ? JSON.parse(pkgStr).version : '';
+
+            const distPkgStr = fs.readFileSync("./dist/package.json", "utf-8");
+            const distPkg = distPkgStr ? JSON.parse(distPkgStr) : {};
+            distPkg.version = version;
+            fs.writeFileSync('./dist/package.json', JSON.stringify(distPkg, null, 4));
+        }
+    }
+}
