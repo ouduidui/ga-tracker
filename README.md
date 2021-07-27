@@ -1,6 +1,11 @@
 # 适用于UniApp和微信小程序的谷歌统计 (Google Analytics) SDK
 
-![npm](https://img.shields.io/npm/v/@ouduidui/ga-tracker)[![GitHub stars](https://img.shields.io/github/stars/OUDUIDUI/ga-tracker)](https://github.com/OUDUIDUI/ga-tracker/stargazers)[![GitHub forks](https://img.shields.io/github/forks/OUDUIDUI/ga-tracker)](https://github.com/OUDUIDUI/ga-tracker/network)![GitHub release (latest by date)](https://img.shields.io/github/v/release/ouduidui/ga-tracker)[![GitHub license](https://img.shields.io/github/license/OUDUIDUI/ga-tracker)](https://github.com/OUDUIDUI/ga-tracker/blob/master/LICENSE)
+![npm](https://img.shields.io/npm/v/@ouduidui/ga-tracker) 
+![npm download counts](https://img.shields.io/npm/dt/@ouduidui/ga-tracker.svg) 
+[![GitHub stars](https://img.shields.io/github/stars/OUDUIDUI/ga-tracker)](https://github.com/OUDUIDUI/ga-tracker/stargazers) 
+[![GitHub forks](https://img.shields.io/github/forks/OUDUIDUI/ga-tracker)](https://github.com/OUDUIDUI/ga-tracker/network) 
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/ouduidui/ga-tracker) 
+[![GitHub license](https://img.shields.io/github/license/OUDUIDUI/ga-tracker)](https://github.com/OUDUIDUI/ga-tracker/blob/master/LICENSE)
 
 完整实现了 [Measurement Protocol](https://developers.google.com/analytics/devguides/collection/protocol/v1/reference)，并且API接口和 [Google Analytics for Android](https://developers.google.com/analytics/devguides/collection/android/v4/) 保持高度一致。
 
