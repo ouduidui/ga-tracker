@@ -2,8 +2,8 @@
 export default class Promotion {
     hit: PromotionType;
 
-    static ACTION_CLICK:string = 'click';
-    static ACTION_VIEW:string = 'view';
+    static ACTION_CLICK: 'click' = 'click';
+    static ACTION_VIEW: 'view' = 'view';
 
     constructor() {
         this.hit = {};
@@ -43,8 +43,8 @@ export default class Promotion {
 }
 
 interface PromotionType {
-    id ?: string;   // 促销ID
-    nm ?: string;   // 促销名称
-    cr ?: string;   // 促销素材
-    ps ?: string;   // 促销位置
+    id?: string;   // 促销ID
+    nm?: string;   // 促销名称
+    cr?: string;   // 促销素材
+    ps?: string;   // 促销位置
 }

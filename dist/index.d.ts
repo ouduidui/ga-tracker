@@ -65,8 +65,8 @@ declare type HitType = {
 
 declare class Promotion {
     hit: PromotionType;
-    static ACTION_CLICK: string;
-    static ACTION_VIEW: string;
+    static ACTION_CLICK: 'click';
+    static ACTION_VIEW: 'view';
     constructor();
     /**
      * 设置促销ID
@@ -154,14 +154,14 @@ interface ProductType {
 
 declare class ProductAction {
     hit: HitType;
-    static ACTION_DETAIL: string;
-    static ACTION_CLICK: string;
-    static ACTION_ADD: string;
-    static ACTION_REMOVE: string;
-    static ACTION_CHECKOUT: string;
-    static ACTION_CHECKOUT_OPTION: string;
-    static ACTION_PURCHASE: string;
-    static ACTION_REFUND: string;
+    static ACTION_DETAIL: 'detail';
+    static ACTION_CLICK: 'click';
+    static ACTION_ADD: 'add';
+    static ACTION_REMOVE: 'remove';
+    static ACTION_CHECKOUT: 'checkout';
+    static ACTION_CHECKOUT_OPTION: 'checkout_option';
+    static ACTION_PURCHASE: 'purchase';
+    static ACTION_REFUND: 'refund';
     constructor(action: 'detail' | 'click' | 'add' | 'remove' | 'checkout' | 'checkout_option' | 'purchase' | 'refund');
     /**
      * 设置结帐步骤

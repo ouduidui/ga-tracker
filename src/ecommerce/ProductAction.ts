@@ -3,17 +3,17 @@ import {HitType} from "../type";
 export default class ProductAction {
     hit: HitType;
 
-    static ACTION_DETAIL = 'detail';
-    static ACTION_CLICK = 'click';
-    static ACTION_ADD = 'add';
-    static ACTION_REMOVE = 'remove';
-    static ACTION_CHECKOUT = 'checkout';
-    static ACTION_CHECKOUT_OPTION = 'checkout_option';
-    static ACTION_PURCHASE = 'purchase';
-    static ACTION_REFUND = 'refund';
+    static ACTION_DETAIL: 'detail' = 'detail';
+    static ACTION_CLICK: 'click' = 'click';
+    static ACTION_ADD: 'add' = 'add';
+    static ACTION_REMOVE: 'remove' = 'remove';
+    static ACTION_CHECKOUT: 'checkout' = 'checkout';
+    static ACTION_CHECKOUT_OPTION: 'checkout_option' = 'checkout_option';
+    static ACTION_PURCHASE: 'purchase' = 'purchase';
+    static ACTION_REFUND: 'refund' = 'refund';
 
 
-    constructor(action : 'detail'|'click'|'add'|'remove'|'checkout'|'checkout_option'|'purchase'|'refund') {
+    constructor(action: 'detail' | 'click' | 'add' | 'remove' | 'checkout' | 'checkout_option' | 'purchase' | 'refund') {
         this.hit = {
             pa: action
         }
@@ -22,7 +22,7 @@ export default class ProductAction {
     /**
      * 设置结帐步骤
      * */
-    setCheckoutStep(step : number): ProductAction {
+    setCheckoutStep(step: number): ProductAction {
         this.hit['cos'] = step;
         return this;
     }
@@ -30,7 +30,7 @@ export default class ProductAction {
     /**
      * 设置结帐步骤选项
      * */
-    setCheckoutOptions(option : string): ProductAction {
+    setCheckoutOptions(option: string): ProductAction {
         this.hit['col'] = option;
         return this;
     }
@@ -39,7 +39,7 @@ export default class ProductAction {
      * 设置产品操作列表
      * 发生产品操作的列表或集合。这是一个可以在“产品操作”设置为“detail”或“click”时发送的附加参数
      * */
-    setProductActionList(productActionList : string): ProductAction {
+    setProductActionList(productActionList: string): ProductAction {
         this.hit['pal'] = productActionList;
         return this;
     }
@@ -48,7 +48,7 @@ export default class ProductAction {
      * 产品列表来源
      * NOTE: 查不到协议字段名,但是Android SDK中查到是pls
      * */
-    setProductListSource(productListSource : string): ProductAction {
+    setProductListSource(productListSource: string): ProductAction {
         this.hit["pls"] = productListSource;
         return this;
     }
@@ -56,7 +56,7 @@ export default class ProductAction {
     /**
      * 设置交易使用的优惠券代码
      * */
-    setTransactionCouponCode(transactionCouponCode : string): ProductAction {
+    setTransactionCouponCode(transactionCouponCode: string): ProductAction {
         this.hit["tcc"] = transactionCouponCode;
         return this;
     }
@@ -64,7 +64,7 @@ export default class ProductAction {
     /**
      * 设置交易id
      * */
-    setTransactionId(transactionId : string): ProductAction {
+    setTransactionId(transactionId: string): ProductAction {
         this.hit["ti"] = transactionId;
         return this;
     }
@@ -72,7 +72,7 @@ export default class ProductAction {
     /**
      * 设置交易关联公司
      * */
-    setTransactionAffiliation(transactionAffiliation : string): ProductAction {
+    setTransactionAffiliation(transactionAffiliation: string): ProductAction {
         this.hit["ta"] = transactionAffiliation;
         return this;
     }
@@ -81,7 +81,7 @@ export default class ProductAction {
      * 设置交易收入
      * 指总收入：此值应包含所有运费或税费。
      * */
-    setTransactionRevenue(revenue : number): ProductAction {
+    setTransactionRevenue(revenue: number): ProductAction {
         this.hit["tr"] = revenue;
         return this;
     }
@@ -89,7 +89,7 @@ export default class ProductAction {
     /**
      * 设置交易运费
      * */
-    setTransactionShipping(shipping : number): ProductAction {
+    setTransactionShipping(shipping: number): ProductAction {
         this.hit["ts"] = shipping;
         return this;
     }
@@ -97,7 +97,7 @@ export default class ProductAction {
     /**
      * 设置交易税费
      * */
-    setTransactionTax(tax : number): ProductAction {
+    setTransactionTax(tax: number): ProductAction {
         this.hit["tt"] = tax;
         return this;
     }
