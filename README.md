@@ -1,3 +1,9 @@
+> **该项目将停止维护**
+> 
+> 从 2023 年 7 月 1 日起，Universal Analytics 将不再处理标准媒体资源中的新数据。请立即着手准备，设置并迁移到 Google Analytics（分析）4 媒体资源。
+> 
+> [查看详情](https://support.google.com/analytics/answer/11583528)
+
 # 适用于UniApp和微信小程序的谷歌统计 (Google Analytics) SDK
 
 ![npm](https://img.shields.io/npm/v/@ouduidui/ga-tracker) 
